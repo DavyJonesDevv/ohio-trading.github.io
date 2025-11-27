@@ -4,15 +4,16 @@ async function loadData() {
   try {
     const res = await fetch("skins.json");
     if (res.ok) skins = await res.json();
-  } catch (e) { }
-  if (skins.length === 0 && typeof embeddedSkins !== "undefined") skins = embeddedSkins;
+  } catch {}
+  if (skins.length === 0 && typeof embeddedSkins !== "undefined") {
+    skins = embeddedSkins;
+  }
   render();
 }
 
-const formatWorth = n => {
-  if (n === 0) return ""; // Will be replaced with "Unrated"
-  if (n >= 1e6) return (n / 1e6).toFixed(1) + "M";
-  if (n >= 1e3) return Math.floor(n / 1e3) + "K";
+const formatWorth = (n) => {
+  if (n >= 1000000) return (n / 1000000).toFixed(1) + "M";
+  if (n >= 1000) return Math.floor(n / 1000) + "K";
   return n.toString();
 };
 
@@ -22,40 +23,43 @@ const sortBy = document.getElementById("sortBy");
 
 function render() {
   let list = skins.slice();
-  const q = searchInput.value.trim().toLowerCase();
-  if (q) list = list.filter(s => s.name.toLowerCase().includes(q));
 
-  // Sorting
+  // Search
+  if (searchInput.value.trim()) {
+    const q = searchInput.value.toLowerCase();
+    list = list.filter(s => s.name.toLowerCase().includes(q));
+  }
+
+  // Sort
   switch (sortBy.value) {
-    case "worth_desc":  list.sort((a, b) => (b.worth || 0) - (a.worth || 0)); break;
-    case "worth_asc":   list.sort((a, b) => (a.worth || 0) - (b.worth || 0)); break;
-    case "demand_desc": list.sort((a, b) => (parseFloat(b.demand) || 0) - (parseFloat(a.demand) || 0)); break;
-    case "name_asc":    list.sort((a, b) => a.name.localeCompare(b.name)); break;
+    case "worth_desc": list.sort((a,b) => (b.worth || 0) - (a.worth || 0)); break;
+    case "worth_asc":  list.sort((a,b) => (a.worth || 0) - (b.worth || 0)); break;
+    case "demand_desc": list.sort((a,b) => (parseFloat(b.demand) || 0) - (parseFloat(a.demand) || 0)); break;
+    case "name_asc":   list.sort((a,b) => a.name.localeCompare(b.name)); break;
   }
 
   tbody.innerHTML = "";
 
-  for (const s of list) {
-    const isUnrated = s.worth === 0;
-    const isUnknownDemand = s.demand === "?";
+  list.forEach(s => {
+    const worth = s.worth;
+    const demand = s.demand;
 
-    const demandNum = isUnknownDemand ? 0 : parseFloat(s.demand) || 0;
-    const demandClass = isUnknownDemand ? "unknown" :
-                        demandNum >= 8 ? "high" :
-                        demandNum >= 6 ? "med" :
-                        demandNum >= 4 ? "low" : "low";
+    const worthText = worth === 0 ? "Unrated" : "$" + formatWorth(worth);
+    const demandText = demand === "?" ? "Unknown" : demand + "/10";
 
-    const worthText = isUnrated ? "Unrated" : "$" + formatWorth(s.worth);
-    const demandText = isUnknownDemand ? "Unknown" : s.demand + "/10";
+    const demandClass = demand === "?" ? "unknown" :
+                        parseFloat(demand) >= 8 ? "high" :
+                        parseFloat(demand) >= 6 ? "med" :
+                        parseFloat(demand) >= 4 ? "low" : "low";
 
     const row = document.createElement("tr");
     row.innerHTML = `
       <td data-label="Skin">${s.name}</td>
-      <td data-label="Value" class="value ${isUnrated ? 'unrated' : ''}">${worthText}</td>
+      <td data-label="Value" class="value ${worth === 0 ? 'unrated' : ''}">${worthText}</td>
       <td data-label="Demand" class="demand ${demandClass}">${demandText}</td>
     `;
     tbody.appendChild(row);
-  }
+  });
 }
 
 searchInput.addEventListener("input", render);
