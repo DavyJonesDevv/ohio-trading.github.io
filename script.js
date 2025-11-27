@@ -4,12 +4,17 @@ async function loadData() {
   try {
     const res = await fetch("skins.json");
     if (res.ok) skins = await res.json();
-  } catch {}
+  } catch (e) { }
   if (skins.length === 0 && typeof embeddedSkins !== "undefined") skins = embeddedSkins;
   render();
 }
 
-const formatWorth = n => n >= 1e6 ? (n/1e6).toFixed(1)+"M" : n >= 1e3 ? Math.floor(n/1e3)+"K" : n.toString();
+const formatWorth = n => {
+  if (n === 0) return ""; // Will be replaced with "Unrated"
+  if (n >= 1e6) return (n / 1e6).toFixed(1) + "M";
+  if (n >= 1e3) return Math.floor(n / 1e3) + "K";
+  return n.toString();
+};
 
 const tbody = document.querySelector("#skinsTable tbody");
 const searchInput = document.getElementById("search");
@@ -22,10 +27,10 @@ function render() {
 
   // Sorting
   switch (sortBy.value) {
-    case "worth_desc":  list.sort((a,b) => (b.worth || 0) - (a.worth || 0)); break;
-    case "worth_asc":   list.sort((a,b) => (a.worth || 0) - (b.worth || 0)); break;
-    case "demand_desc": list.sort((a,b) => (parseFloat(b.demand) || 0) - (parseFloat(a.demand) || 0)); break;
-    case "name_asc":    list.sort((a,b) => a.name.localeCompare(b.name)); break;
+    case "worth_desc":  list.sort((a, b) => (b.worth || 0) - (a.worth || 0)); break;
+    case "worth_asc":   list.sort((a, b) => (a.worth || 0) - (b.worth || 0)); break;
+    case "demand_desc": list.sort((a, b) => (parseFloat(b.demand) || 0) - (parseFloat(a.demand) || 0)); break;
+    case "name_asc":    list.sort((a, b) => a.name.localeCompare(b.name)); break;
   }
 
   tbody.innerHTML = "";
