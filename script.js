@@ -35,14 +35,17 @@ function render() {
 
   tbody.innerHTML = "";
 
-  list.forEach((s) => {
+  list.forEach((s, index) => {
     const worthText = s.worth === 0 ? "Unrated" : "$" + formatWorth(s.worth);
     const demandText = s.demand === "?" ? "Unknown" : s.demand + "/10";
 
     const demandNum = s.demand === "?" ? 0 : parseFloat(s.demand);
-    const demandClass = s.demand === "?" ? "unknown" : demandNum >= 8 ? "high" : demandNum >= 6 ? "med" : demandNum >= 4 ? "low" : "low";
+    const demandClass = s.demand === "?" ? "unknown" : demandNum >= 8 ? "high" : demandNum >= 6 ? "med" : "low";
 
     const row = document.createElement("tr");
+    row.classList.add("fade-in");
+    row.style.animationDelay = `${index * 0.03}s`;
+
     row.innerHTML = `
       <td data-label="Skin">${s.name}</td>
       <td data-label="Value" class="${s.worth === 0 ? 'unrated' : 'value'}">${worthText}</td>
@@ -56,4 +59,3 @@ searchInput.addEventListener("input", render);
 sortBy.addEventListener("change", render);
 
 loadData();
-
