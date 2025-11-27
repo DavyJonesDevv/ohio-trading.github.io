@@ -1,36 +1,120 @@
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: system-ui, sans-serif; background:#0f0f17; color:#eee; line-height:1.5; }
-.site-header { background:#1a1a2e; padding:1.5rem; text-align:center; border-bottom:3px solid #00ff99; }
-h1 { font-size:2.5rem; margin-bottom:0.5rem; }
-.subtitle { color:#00ff99; margin-bottom:1rem; }
-
-.controls { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:1rem; }
-.controls input, .controls select, .controls button {
-  padding:0.7rem 1rem; border:none; border-radius:8px; font-size:1rem;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #e0e0ff;
+  min-height: 100vh;
 }
-.controls input { flex:1; max-width:300px; background:#16213e; color:#fff; }
-.controls button { background:#00ff99; color:#000; font-weight:bold; cursor:pointer; }
-.controls button:hover { background:#00cc77; }
 
-main { padding:2rem; max-width:1400px; margin:auto; }
-.table-wrap { overflow-x:auto; border-radius:12px; background:#16213e; }
-table { width:100%; border-collapse:collapse; }
-th { background:#00ff99; color:#000; padding:1rem; text-transform:uppercase; font-size:0.9rem; }
-td { padding:1rem; border-bottom:1px solid #334; text-align:center; }
-.skin-name { text-align:left; }
-.worth { font-weight:bold; color:#0f0; }
-.demand { font-weight:bold; }
-.demand.high { color:#00ff99; }
-.demand.med { color:#ffaa00; }
-.demand.low { color:#ff5555; }
-.demand.very-low { color:#ff2d55; }
+.header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #00ffff;
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+}
 
-.empty { text-align:center; padding:3rem; font-size:1.2rem; color:#666; }
+.logo {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+}
 
-/* Modal */
-.modal { position:fixed; inset:0; background:rgba(0,0,0,0.9); display:flex; align-items:center; justify-content:center; z-index:999; }
-.modal-inner { background:#16213e; padding:2rem; border-radius:12px; width:90%; max-width:900px; max-height:90vh; overflow:auto; position:relative; }
-.close { position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:2rem; color:#aaa; cursor:pointer; }
-#editorArea { width:100%; height:60vh; background:#0f0f17; color:#fff; padding:1rem; font-family:monospace; font-size:0.95rem; border:none; border-radius:8px; }
-.modal-actions { margin-top:1rem; text-align:right; gap:1rem; display:flex; justify-content:flex-end; }
-.modal-actions button { padding:0.8rem 1.5rem; }
+.tagline {
+  margin: 0.5rem 0 1.5rem;
+  color: #00ffff;
+  font-size: 1.1rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.controls input, .controls select {
+  padding: 0.9rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+  backdrop-filter: blur(5px);
+}
+
+.controls input:focus, .controls select:focus {
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(10, 10, 30, 0.8);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+th {
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  color: black;
+  padding: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+tr:hover {
+  background: rgba(0, 255, 255, 0.1);
+  transform: scale(1.01);
+  transition: 0.2s;
+}
+
+.worth {
+  font-weight: bold;
+  color: #00ff88;
+}
+
+.demand {
+  font-weight: bold;
+}
+
+.demand.high { color: #ff0066; text-shadow: 0 0 10px #ff0066; }
+.demand.med  { color: #ffaa00; }
+.demand.low  { color: #aaaa00; }
+.demand.very-low { color: #666; font-style: italic; }
+
+.unrated {
+  color: #888;
+  font-style: italic;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .logo { font-size: 2.2rem; }
+  .controls { flex-direction: column; align-items: center; }
+  table { font-size: 0.9rem; }
+}
