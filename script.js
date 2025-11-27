@@ -59,3 +59,4 @@ searchInput.addEventListener("input", render);
 sortBy.addEventListener("change", render);
 
 loadData();
+
