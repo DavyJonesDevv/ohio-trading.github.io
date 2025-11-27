@@ -535,4 +535,3 @@ const embeddedSkins = [
   {"name": "Balloons Gold Rose", "worth": 2000, "demand": "10"},
   {"name": "Balloons Void Rose", "worth": 15000, "demand": "10+"}
 ];
-
