@@ -7,17 +7,17 @@ async function loadData() {
     skins = await res.json();
   } catch {
     console.warn("skins.json not found → using embedded data from skins.js");
-    skins = embeddedSkins;
+    skins = embeddedSkins; // ← this comes from skins.js
   }
   render();
 }
 
-const formatWorth = n => n >= 1e6 ? (n/1e6).toFixed(1)+"M" : n >= 1e3 ? (n/1e3)+"K" : n.toString();
+const formatWorth = n => n >= 1e6 ? (n/1e6).toFixed(1)+"M" : n >= 1e3 ? Math.floor(n/1e3)+"K" : n;
 
-const tbody = document.querySelector("#skinsTable tbody");
+const tbody      = document.querySelector("#skinsTable tbody");
 const searchInput = document.getElementById("search");
-const sortBy = document.getElementById("sortBy");
-const emptyText = document.getElementById("empty");
+const sortBy     = document.getElementById("sortBy");
+const emptyText  = document.getElementById("empty");
 
 function render() {
   let list = skins.slice();
@@ -28,14 +28,14 @@ function render() {
 
   // Sort
   switch (sortBy.value) {
-    case "worth_desc": list.sort((a,b) => b.worth - a.worth); break;
-    case "worth_asc":  list.sort((a,b) => a.worth - b.worth); break;
+    case "worth_desc":  list.sort((a,b) => b.worth - a.worth); break;
+    case "worth_asc":   list.sort((a,b) => a.worth - b.worth); break;
     case "demand_desc": list.sort((a,b) => parseFloat(b.demand) - parseFloat(a.demand)); break;
-    case "name_asc":   list.sort((a,b) => a.name.localeCompare(b.name)); break;
+    case "name_asc":    list.sort((a,b) => a.name.localeCompare(b.name)); break;
   }
 
   tbody.innerHTML = "";
-  if (!list.length) {
+  if (list.length === 0) {
     emptyText.style.display = "block";
     return;
   }
@@ -70,5 +70,5 @@ document.getElementById("downloadJson").onclick = () => {
   URL.revokeObjectURL(url);
 };
 
-// Start
+// Start everything
 loadData();
