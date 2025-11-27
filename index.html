@@ -9,24 +9,16 @@
 <body>
   <header class="site-header">
     <h1>Gun Skin Values</h1>
-    <p class="subtitle">Worth & demand tracker</p>
-
+    <p class="subtitle">Real-time worth & demand tracker (Roblox Arsenal / Bad Business style)</p>
     <div class="controls">
-      <input id="search" placeholder="Search name..." />
-      <select id="filterDemand">
-        <option value="">All demand</option>
-        <option>Very High</option>
-        <option>High</option>
-        <option>Medium</option>
-        <option>Low</option>
-      </select>
+      <input id="search" placeholder="Search skin name..." autocomplete="off" />
       <select id="sortBy">
-        <option value="worth_desc">Worth ↓</option>
-        <option value="worth_asc">Worth ↑</option>
+        <option value="worth_desc">Worth ↓ (Highest)</option>
+        <option value="worth_asc">Worth ↑ (Lowest)</option>
+        <option value="demand_desc">Demand ↓</option>
         <option value="name_asc">Name A→Z</option>
-        <option value="demand_desc">Demand (High→Low)</option>
       </select>
-      <button id="openEditor">Edit data</button>
+      <button id="openEditor">Edit Data</button>
       <button id="downloadJson">Download JSON</button>
     </div>
   </header>
@@ -36,26 +28,26 @@
       <table id="skinsTable">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Worth</th>
-            <th>Demand</th>
-            <th>Rarity</th>
+            <th>Skin Name</th>
+            <th>Worth (Cash)</th>
+            <th>Demand /10</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
-      <p id="empty" class="empty">No results.</p>
+      <p id="empty" class="empty">No skins match your filters.</p>
     </section>
   </main>
 
+  <!-- Editor Modal -->
   <div id="editor" class="modal" aria-hidden="true">
     <div class="modal-inner">
-      <button id="closeEditor" class="close">✕</button>
-      <h2>Edit skins JSON</h2>
-      <textarea id="editorArea"></textarea>
+      <button id="closeEditor" class="close">X</button>
+      <h2>Edit skins.json (live)</h2>
+      <textarea id="editorArea" spellcheck="false"></textarea>
       <div class="modal-actions">
-        <button id="saveEditor">Save to page</button>
-        <button id="resetData">Reset sample data</button>
+        <button id="saveEditor">Save & Refresh</button>
+        <button id="resetData">Reset to Current Data</button>
       </div>
     </div>
   </div>
