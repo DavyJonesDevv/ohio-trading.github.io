@@ -9,9 +9,9 @@
 <body>
   <header class="site-header">
     <h1>Gun Skin Values</h1>
-    <p class="subtitle">Real-time worth & demand tracker (Roblox Arsenal / Bad Business style)</p>
+    <p class="subtitle">Live worth & demand tracker • Nov 27, 2025</p>
     <div class="controls">
-      <input id="search" placeholder="Search skin name..." autocomplete="off" />
+      <input id="search" placeholder="Search any skin..." autocomplete="off" />
       <select id="sortBy">
         <option value="worth_desc">Worth ↓ (Highest)</option>
         <option value="worth_asc">Worth ↑ (Lowest)</option>
@@ -35,23 +35,23 @@
         </thead>
         <tbody></tbody>
       </table>
-      <p id="empty" class="empty">No skins match your filters.</p>
+      <p id="empty" class="empty">No skins found.</p>
     </section>
   </main>
 
-  <!-- Editor Modal -->
   <div id="editor" class="modal" aria-hidden="true">
     <div class="modal-inner">
-      <button id="closeEditor" class="close">X</button>
+      <button id="closeEditor" class="close">×</button>
       <h2>Edit skins.json (live)</h2>
       <textarea id="editorArea" spellcheck="false"></textarea>
       <div class="modal-actions">
         <button id="saveEditor">Save & Refresh</button>
-        <button id="resetData">Reset to Current Data</button>
+        <button id="resetData">Reset to Current</button>
       </div>
     </div>
   </div>
 
+  <script src="skins.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
