@@ -1,4 +1,4 @@
-[
+const embeddedSkins = [
   {"name": "Invisibles AUG", "worth": 20000, "demand": "2"},
   {"name": "Invisibles RPG", "worth": 18000, "demand": "8"},
   {"name": "Invisibles Barrett", "worth": 17000, "demand": "5"},
@@ -534,4 +534,5 @@
   {"name": "Balloons Skull", "worth": 200, "demand": "3"},
   {"name": "Balloons Gold Rose", "worth": 2000, "demand": "10"},
   {"name": "Balloons Void Rose", "worth": 15000, "demand": "10+"}
-]
+];
+
