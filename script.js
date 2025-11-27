@@ -27,10 +27,10 @@ function render() {
   if (q) list = list.filter(s => s.name.toLowerCase().includes(q));
 
   switch (sortBy.value) {
-    case "worth_desc": list.sort((a, b) => (b.worth || 0) - (a.worth || 0)); break;
+    case "name_asc": list.sort((a, b) => a.name.localeCompare(b.name)); break;
     case "worth_asc": list.sort((a, b) => (a.worth || 0) - (b.worth || 0)); break;
     case "demand_desc": list.sort((a, b) => (parseFloat(b.demand) || 0) - (parseFloat(a.demand) || 0)); break;
-    case "name_asc": list.sort((a, b) => a.name.localeCompare(b.name)); break;
+    case "worth_desc": list.sort((a, b) => (b.worth || 0) - (a.worth || 0)); break;
   }
 
   tbody.innerHTML = "";
@@ -56,3 +56,4 @@ searchInput.addEventListener("input", render);
 sortBy.addEventListener("change", render);
 
 loadData();
+
