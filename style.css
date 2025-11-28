@@ -1,174 +1,60 @@
-/* === GLOBAL === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Consolas", "Courier New", monospace;
-}
-
 body {
-  background: #000;
-  color: #fff;
-  overflow: hidden;
+
+
+.input-wrap {
+margin-top: 1.5rem;
+position: relative;
+}
+.input-wrap input {
+width: 100%;
+padding: 1rem;
+background: #000;
+border: 1px solid #333;
+color: #0ff;
+}
+.dropdown {
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+background: #000;
+border: 1px solid #333;
+max-height: 250px;
+overflow-y: auto;
+display: none;
+}
+.option {
+padding: 1rem;
+border-bottom: 1px solid #111;
+cursor: pointer;
+}
+.option:hover {
+background: #022;
+color: #0ff;
 }
 
-main {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  gap: 20px;
-  padding: 30px;
+
+.total {
+margin-top: 2rem;
+text-align: center;
+font-size: 1.4rem;
+}
+.total span {
+color: #0ff;
 }
 
-/* === HEADER GLITCH === */
-header.glitch {
-  font-size: 42px;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 20px;
-  position: relative;
-  color: white;
-  animation: glow 2s infinite;
-  z-index: 5;
+
+.versus {
+font-size: 3rem;
+color: #0ff4;
+text-align: center;
+margin-top: 8rem;
 }
 
-header.glitch::before,
-header.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0.8;
-}
 
-header.glitch::before {
-  color: #f00;
-  animation: glitch1 1s infinite;
-}
-
-header.glitch::after {
-  color: #0ff;
-  animation: glitch2 1s infinite;
-}
-
-@keyframes glitch1 {
-  0% { transform: translate(0, 0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-3px, -1px); }
-  60% { transform: translate(1px, -2px); }
-  80% { transform: translate(3px, 1px); }
-  100% { transform: translate(0, 0); }
-}
-
-@keyframes glitch2 {
-  0% { transform: translate(0, 0); }
-  20% { transform: translate(2px, -2px); }
-  40% { transform: translate(3px, 1px); }
-  60% { transform: translate(-1px, 2px); }
-  80% { transform: translate(-3px, -1px); }
-  100% { transform: translate(0, 0); }
-}
-
-@keyframes glow {
-  0%, 100% { text-shadow: 0 0 4px #fff; }
-  50% { text-shadow: 0 0 12px #0ff; }
-}
-
-/* === PANELS === */
-.panel {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid #555;
-  padding: 20px;
-  width: 360px;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 0 20px rgba(255,255,255,0.08);
-  animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.panel h2 {
-  margin-bottom: 10px;
-  font-size: 22px;
-  border-bottom: 1px solid #444;
-  padding-bottom: 5px;
-}
-
-textarea, input {
-  width: 100%;
-  background: #111;
-  color: white;
-  border: 1px solid #444;
-  padding: 10px;
-  resize: none;
-  margin-bottom: 10px;
-}
-
-button {
-  width: 100%;
-  background: #0f0;
-  border: none;
-  padding: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-button:hover {
-  background: #7f7;
-}
-
-.result {
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #333;
-  background: #080808;
-  min-height: 40px;
-}
-
-/* === PARTICLE BACKGROUND === */
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-}
-
-/* === SCANLINES === */
-.scanlines {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.03) 0px,
-    rgba(255,255,255,0.03) 2px,
-    transparent 4px,
-    transparent 8px
-  );
-  z-index: 3;
-}
-
-/* === NOISE === */
-.noise {
-  position: fixed;
-  inset: 0;
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+B8AAwMCAO4SUgQAAAAASUVORK5CYII=");
-  opacity: 0.07;
-  animation: noiseMove 0.25s steps(2) infinite;
-  pointer-events: none;
-  z-index: 4;
-}
-
-@keyframes noiseMove {
-  0% { transform: translate(0,0); }
-  100% { transform: translate(5px,-5px); }
+.verdict {
+text-align: center;
+font-family: "Orbitron";
+font-size: 3rem;
+margin: 3rem 0;
 }
