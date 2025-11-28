@@ -3,68 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ohio Skin Vault • Black Market Wiki</title>
+  <title>OHIO VAULT // 2025</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="scanlines"></div>
-  
-  <header class="wiki-header">
-    <h1>OHIO SKIN VAULT</h1>
-    <p class="subtitle">Black Market Values • Community Wiki • Updated November 28, 2025</p>
-    <div class="search-bar">
-      <input type="text" id="search" placeholder="Search 758 skins..." autocomplete="off">
-    </div>
+  <!-- CRT + Glitch Background -->
+  <div class="crt"></div>
+  <div class="glitch-layers" data-text="OHIO VAULT"></div>
+
+  <!-- Flickering Logo -->
+  <header class="header">
+    <h1 class="logo glitch" data-text="OHIO VAULT">OHIO VAULT</h1>
+    <p class="tagline">skin values • november 28 2025</p>
   </header>
 
-  <main class="wiki-container" id="content"></main>
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="vault">VAULT</button>
+    <button class="tab-btn" data-tab="calc">TRADE CALC</button>
+  </div>
 
-  <footer class="wiki-footer">
-    <p>Ohio Trading & Exchange Co. • All values community-sourced • Use at own risk</p>
-  </footer>
+  <!-- Search -->
+  <div class="search-container">
+    <input type="text" id="search" placeholder="SEARCH SKINS..." autocomplete="off">
+  </div>
+
+  <!-- Vault Tab -->
+  <main id="vault" class="tab-content active">
+    <div class="wiki-container" id="content"></div>
+  </main>
+
+  <!-- Trade Calculator Tab -->
+  <div id="calc" class="tab-content">
+    <div class="calculator">
+      <div class="side giving">
+        <h2>GIVING</h2>
+        <div id="giving-items"></div>
+        <input type="text" class="add-item" placeholder="+ ADD SKIN" data-side="giving">
+      </div>
+
+      <div class="vs">⟷</div>
+
+      <div class="side receiving">
+        <h2>RECEIVING</h2>
+        <div id="receiving-items"></div>
+        <input type="text" class="add-item" placeholder="+ ADD SKIN" data-side="receiving">
+      </div>
+
+      <div class="result" id="result">—</div>
+    </div>
+  </div>
+
+  <footer>community data • use at own risk</footer>
 
   <script src="skins.js"></script>
   <script>
     const skins = embeddedSkins || [];
     const content = document.getElementById("content");
     const searchInput = document.getElementById("search");
+    const tabs = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
 
-    // Group by prefix exactly as in your original order
+    // === TAB SWITCHING ===
+    tabs.forEach(t => t.addEventListener("click", () => {
+      tabs.forEach(btn => btn.classList.remove("active"));
+      tabContents.forEach(c => c.classList.remove("active"));
+      t.classList.add("active");
+      document.getElementById(t.dataset.tab).classList.add("active");
+    }));
+
+    // === GROUPING (keeps your exact original order) ===
+    const prefixOrder = ["Invisible","Obsidian","Dark Matter","Anti Matter","Crimson Bloods","Void Reapers","Underworld","White Ghost","Solid Gold","Gift Wrapped","Christmas Future","Golden Snow","Frozen Gold","Sub Zero","Rainbow Firework","Solid Gold V2","St Patrick","Holy Fire","Bloody Heart","Fallout","Atomic Pumpkin","Ethereal","Spectral","Balloon"];
     const groups = [];
-    const seen = new Set();
+    const used = new Set();
 
-    const prefixes = [
-      "Invisible", "Obsidian", "Dark Matter", "Anti Matter", "Crimson Bloods",
-      "Void Reapers", "Underworld", "White Ghost", "Solid Gold", "Gift Wrapped",
-      "Christmas Future", "Golden Snow", "Frozen Gold", "Sub Zero", "Rainbow Firework",
-      "Solid Gold V2", "St Patrick", "Holy Fire", "Bloody Heart", "Fallout",
-      "Atomic Pumpkin", "Ethereal", "Spectral", "Balloon"
-    ];
-
-    prefixes.forEach(prefix => {
-      const group = skins.filter(s => {
-        const matches = s.name.startsWith(prefix) || s.name.includes(prefix);
-        if (matches && !seen.has(s.name)) {
-          seen.add(s.name);
+    prefixOrder.forEach(p => {
+      const list = skins.filter(s => {
+        if (used.has(s.name)) return false;
+        if (s.name.includes(p)) {
+          used.add(s.name);
           return true;
         }
         return false;
       });
-      if (group.length > 0) groups.push({ name: prefix, skins: group });
+      if (list.length) groups.push({name: p === "Solid Gold V2" ? "Solid Gold V2" : p, skins: list});
     });
 
-    // Catch any leftovers (rare/event skins)
-    const leftovers = skins.filter(s => !seen.has(s.name));
-    if (leftovers.length > 0) {
-      groups.push({ name: "Limited & Event", skins: leftovers });
-    }
+    // leftovers
+    const leftovers = skins.filter(s => !used.has(s.name));
+    if (leftovers.length) groups.push({name: "Limited / Event", skins: leftovers});
 
+    // === FORMATTING ===
     function formatWorth(n) {
       if (n === 0) return "Unrated";
-      if (n >= 1000000) return "$" + (n / 1000000).toFixed(1) + "M";
-      if (n >= 1000) return "$" + Math.floor(n / 1000) + "K";
-      return "$" + n;
+      if (n >= 1000000) return "$" + (n/1000000).toFixed(1)+"M";
+      if (n >= 1000) return "$"+Math.floor(n/1000)+"K";
+      return "$"+n;
     }
 
     function getDemandClass(d) {
@@ -76,44 +111,116 @@
       return "low";
     }
 
-    function render() {
-      const query = searchInput.value.toLowerCase();
+    // === RENDER VAULT ===
+    function renderVault() {
+      const q = searchInput.value.toLowerCase();
       content.innerHTML = "";
 
-      groups.forEach(group => {
-        const filtered = group.skins.filter(s => s.name.toLowerCase().includes(query));
-        if (filtered.length === 0) return;
+      groups.forEach(g => {
+        const filtered = g.skins.filter(s => s.name.toLowerCase().includes(q));
+        if (!filtered.length) return;
 
-        const section = document.createElement("section");
-        section.className = "category";
-        section.innerHTML = `
-          <h2 class="category-title">
-            ${group.name} <span class="count">${filtered.length}</span>
-          </h2>
+        const sec = document.createElement("section");
+        sec.className = "category";
+        sec.innerHTML = `
+          <h2 class="cat-title">${g.name} <span>${filtered.length}</span></h2>
           <div class="grid">
             ${filtered.map(s => `
-              <div class="skin-card" data-demand="${getDemandClass(s.demand)}">
-                <div class="rarity-badge">${group.name.split(" ")[0].toUpperCase()}</div>
+              <div class="card" data-demand="${getDemandClass(s.demand)}">
+                <div class="badge">${g.name.split(" ")[0].toUpperCase()}</div>
                 <h3>${s.name}</h3>
                 <div class="value">${formatWorth(s.worth)}</div>
-                <div class="demand">
-                  Demand: <span class="demand-value ${getDemandClass(s.demand)}">
-                    ${s.demand === "?" ? "Unknown" : s.demand + "/10"}
-                  </span>
-                </div>
+                <div class="demand">Demand <span class="${getDemandClass(s.demand)}">${s.demand === "?" ? "???" : s.demand+"/10"}</span></div>
               </div>
             `).join("")}
           </div>
         `;
-        content.appendChild(section);
+        content.appendChild(sec);
       });
     }
 
-    searchInput.addEventListener("input", () => {
-      render();
+    searchInput.addEventListener("input", renderVault);
+    renderVault();
+
+    // === TRADE CALCULATOR ===
+    const givingItems = document.getElementById("giving-items");
+    const receivingItems = document.getElementById("receiving-items");
+    const addInputs = document.querySelectorAll(".add-item");
+    const resultDiv = document.getElementById("result");
+
+    function createItemElement(skin, side) {
+      const div = document.createElement("div");
+      div.className = "trade-item";
+      div.innerHTML = `
+        <span>${skin.name}</span>
+        <span class="val">${formatWorth(skin.worth)}</span>
+        <button class="remove">×</button>
+      `;
+      div.querySelector(".remove").onclick = () => {
+        div.remove();
+        updateResult();
+      };
+      document.getElementById(side + "-items").appendChild(div);
+    }
+
+    addInputs.forEach(input => {
+      let timeout;
+      input.addEventListener("input", () => {
+        clearTimeout(timeout);
+        const val = input.value.toLowerCase();
+        timeout = setTimeout(() => {
+          const matches = skins.filter(s => s.name.toLowerCase().includes(val));
+          if (matches.length === 1 && val.length > 3) {
+            createItemElement(matches[0], input.dataset.side);
+            input.value = "";
+            updateResult();
+          }
+        }, 600);
+      });
     });
 
-    render();
+    function getTotalWorth(container) {
+      return Array.from(container.children).reduce((sum, el) => {
+        const text = el.querySelector(".val").textContent;
+        const num = parseFloat(text.replace(/[^0-9.]/g,""));
+        if (text.includes("M")) return sum + num * 1000000;
+        if (text.includes("K")) return sum + num * 1000;
+        return sum + (num || 0);
+      }, 0);
+    }
+
+    function updateResult() {
+      const give = getTotalWorth(givingItems);
+      const receive = getTotalWorth(receivingItems);
+      const diff = receive - give;
+      const pct = give === 0 ? 0 : ((receive - give) / give) * 100;
+
+      let msg = "", color = "";
+      if (give === 0 && receive === 0) {
+        msg = "—";
+        color = "#444";
+      } else if (Math.abs(pct) <= 12) {
+        msg = "FAIR TRADE";
+        color = "#00ff9d";
+      } else if (pct > 12) {
+        msg = `GOOD TRADE +${pct.toFixed(0)}%`;
+        color = "#00ff9d";
+      } else if (pct > -30) {
+        msg = "SLIGHT L";
+        color = "#ffff00";
+      } else {
+        msg = "SCAM / BAD TRADE";
+        color = "#ff0040";
+      }
+
+      resultDiv.textContent = msg;
+      resultDiv.style.color = color;
+      resultDiv.style.textShadow = `0 0 20px ${color}`;
+    }
+
+    // update on any change
+    new MutationObserver(updateResult).observe(givingItems, { childList: true });
+    new MutationObserver(updateResult).observe(receivingItems, { childList: true });
   </script>
 </body>
 </html>
