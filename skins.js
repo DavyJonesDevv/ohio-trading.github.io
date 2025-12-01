@@ -1034,5 +1034,5 @@ const embeddedSkins = [
     {"name":"Bunny Balloon","worth":300000,"demand":"5"},
     {"name":"Bat Balloon","worth":250000,"demand":"4"},
     {"name":"Skull Balloon","worth":200000,"demand":"3"},
-    {"name":"Spectral Scythe Balloon","worth":Unstable Price,"demand":"9"}
+    {"name":"Spectral Scythe Balloon","worth":Unstable Price,"demand":"9"},
 ];
