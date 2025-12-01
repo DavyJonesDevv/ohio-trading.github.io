@@ -1,5 +1,5 @@
 const embeddedSkins = [
-    // --- INVISIBLES — ALL 17 (Average Value: ~13.3m | Average Demand: ~5.1/10)
+    // --- INVISIBLES — ALL 23 (Average Value: ~6.2m | Average Demand: ~3.7/10)
     {"name":"Invisible AUG","worth":20000000,"demand":"2"},
     {"name":"Invisible RPG","worth":18000000,"demand":"8"},
     {"name":"Invisible Barrett","worth":17000000,"demand":"5"},
@@ -24,7 +24,7 @@ const embeddedSkins = [
     {"name":"Invisible M1911","worth":0,"demand":"?"},
     {"name":"Invisible USP","worth":0,"demand":"?"},
 
-    // --- OBSIDIANS — ALL 20 (Average Value: ~6.57m | Average Demand: ~4.5/10)
+    // --- OBSIDIANS — ALL 23 (Average Value: ~6.57m | Average Demand: ~4.48/10)
     {"name":"Obsidian Minigun","worth":15000000,"demand":"6"},
     {"name":"Obsidian FNFAL","worth":12500000,"demand":"8"},
     {"name":"Obsidian RPG","worth":12000000,"demand":"7.5"},
@@ -49,7 +49,7 @@ const embeddedSkins = [
     {"name":"Obsidian M1911","worth":2500000,"demand":"1"},
     {"name":"Obsidian USP","worth":2000000,"demand":"1"},
 
-    // --- DARK MATTERS — ALL 20 (Average Value: ~183k | Average Demand: ~3/10)
+    // --- DARK MATTERS — ALL 26 (Average Value: ~183k | Average Demand: ~3.0/10)
     {"name":"Dark Matter Scar L","worth":300000,"demand":"8"},
     {"name":"Dark Matter P90","worth":260000,"demand":"7"},
     {"name":"Dark Matter RPG","worth":250000,"demand":"6"},
@@ -77,7 +77,7 @@ const embeddedSkins = [
     {"name":"Dark Matter Uzi","worth":120000,"demand":"1"},
     {"name":"Dark Matter Dragunov","worth":120000,"demand":"1"},
 
-    // --- ANTI MATTERS — ALL 23 (Average Value: ~150k | Average Demand: ~2.9/10)
+    // --- ANTI MATTERS — ALL 26 (Average Value: ~150k | Average Demand: ~2.9/10)
     {"name":"Anti Matter Scar L","worth":280000,"demand":"7.5"},
     {"name":"Anti Matter P90","worth":240000,"demand":"7"},
     {"name":"Anti Matter RPG","worth":230000,"demand":"6"},
@@ -120,11 +120,11 @@ const embeddedSkins = [
     {"name":"Crimson Blood Glock 18","worth":120000,"demand":"1.5"},
     {"name":"Crimson Blood AR-15","worth":120000,"demand":"1"},
 
-    // --- VOID REAPERS (Average Value: ~185k | Average Demand: ~3.5/10)
+    // --- VOID REAPERS — ALL 2 (Average Value: ~185k | Average Demand: ~3.5/10)
     {"name":"Void Reaper AS Val","worth":250000,"demand":"6"},
     {"name":"Void Reaper Glock","worth":120000,"demand":"1"},
 
-    // --- UNDERWORLD — ALL 25 (Average Value: ~100k | Average Demand: ~4.5/10)
+    // --- UNDERWORLD — ALL 31 (Average Value: ~100k | Average Demand: ~4.5/10)
     {"name":"Underworld Scar L","worth":300000,"demand":"9"},
     {"name":"Underworld FNFAL","worth":250000,"demand":"8.5"},
     {"name":"Underworld RPG","worth":250000,"demand":"8.5"},
@@ -157,7 +157,7 @@ const embeddedSkins = [
     {"name":"Underworld USP-45","worth":48000,"demand":"1"},
     {"name":"Underworld Raygun","worth":80000,"demand":"2"},
 
-    // --- SOLID GOLDS — ALL 24 (Average Value: ~1.64m | Average Demand: ~3.7/10)
+    // --- SOLID GOLDS — ALL 18 (Average Value: ~1.44m | Average Demand: ~3.47/10)
     {"name":"Solid Gold RPG","worth":3900000,"demand":"9"},
     {"name":"Solid Gold AS VAL","worth":3600000,"demand":"7"},
     {"name":"Solid Gold AUG","worth":3400000,"demand":"7"},
@@ -176,15 +176,6 @@ const embeddedSkins = [
     {"name":"Solid Gold Flamethrower","worth":900000,"demand":"2"},
     {"name":"Solid Gold Mossberg","worth":850000,"demand":"1"},
     {"name":"Solid Gold AR-15","worth":800000,"demand":"1"},
-    {"name":"Solid Gold Uzi","worth":650000,"demand":"3"},
-    {"name":"Solid Gold Dragunov","worth":550000,"demand":"1"},
-    {"name":"Solid Gold Python","worth":500000,"demand":"1"},
-    {"name":"Solid Gold Saiga 12","worth":500000,"demand":"1"},
-    {"name":"Solid Gold Glock-18","worth":450000,"demand":"1"},
-    {"name":"Solid Gold Glock","worth":450000,"demand":"1"},
-    {"name":"Solid Gold Stagecoach","worth":450000,"demand":"1"},
-    {"name":"Solid Gold M1911","worth":420000,"demand":"1"},
-    {"name":"Solid Gold USP","worth":400000,"demand":"1"},
 
     // --- VOIDS — ALL 22 (Average Value: ~2.23m | Average Demand: ~4.26/10)
     {"name":"Void RPG","worth":8500000,"demand":"10"},
@@ -215,7 +206,7 @@ const embeddedSkins = [
     {"name":"Void M1911","worth":475000,"demand":"1"},
     {"name":"Void USP","worth":450000,"demand":"1"},
 
-    // --- CYBERPUNKS — ALL 11 (Average Value: ~2.50m | Average Demand: ~6/10)
+    // --- CYBERPUNKS — ALL 11 (Average Value: ~2.50m | Average Demand: ~6.0/10)
     {"name":"Cyberpunk AS VAL","worth":4700000,"demand":"10"},
     {"name":"Cyberpunk AUG","worth":4500000,"demand":"10"},
     {"name":"Cyberpunk M4A1","worth":3700000,"demand":"8.5"},
@@ -228,40 +219,42 @@ const embeddedSkins = [
     {"name":"Cyberpunk Glock 18","worth":1500000,"demand":"1.5"},
     {"name":"Cyberpunk Glock","worth":1200000,"demand":"1"},
 
-    // --- ATOMICS — ALL 20 (Average Value: ~787k | Average Demand: ~7.2/10)
-    // Amethyst
+    // --- ATOMIC AMETHYST — ALL 5 (Average Value: ~890k | Average Demand: ~8.1/10)
     {"name":"Atomic Amethyst RPG","worth":1200000,"demand":"9.5"},
     {"name":"Atomic Amethyst AS Val","worth":950000,"demand":"8.5"},
     {"name":"Atomic Amethyst M4A1","worth":850000,"demand":"8"},
     {"name":"Atomic Amethyst Sawn","worth":750000,"demand":"7.5"},
     {"name":"Atomic Amethyst Double Barrel","worth":700000,"demand":"7"},
-    // Nature
+
+    // --- ATOMIC NATURE — ALL 5 (Average Value: ~830k | Average Demand: ~7.9/10)
     {"name":"Atomic Nature RPG","worth":1000000,"demand":"9"},
     {"name":"Atomic Nature AS Val","worth":900000,"demand":"9"},
     {"name":"Atomic Nature M4A1","worth":800000,"demand":"8"},
     {"name":"Atomic Nature Sawn","worth":700000,"demand":"8"},
     {"name":"Atomic Nature Double Barrel","worth":650000,"demand":"6"},
-    // Water
+
+    // --- ATOMIC WATER — ALL 5 (Average Value: ~760k | Average Demand: ~7.4/10)
     {"name":"Atomic Water RPG","worth":950000,"demand":"8.5"},
     {"name":"Atomic Water AS Val","worth":850000,"demand":"8"},
     {"name":"Atomic Water M4A1","worth":750000,"demand":"7.5"},
     {"name":"Atomic Water Sawn","worth":650000,"demand":"7"},
     {"name":"Atomic Water Double Barrel","worth":600000,"demand":"6"},
-    // Flame
+
+    // --- ATOMIC FLAME — ALL 5 (Average Value: ~690k | Average Demand: ~5.3/10)
     {"name":"Atomic Flame RPG","worth":900000,"demand":"6.5"},
     {"name":"Atomic Flame AS Val","worth":750000,"demand":"6"},
     {"name":"Atomic Flame M4A1","worth":650000,"demand":"5"},
     {"name":"Atomic Flame Sawn","worth":600000,"demand":"4"},
     {"name":"Atomic Flame Double Barrel","worth":550000,"demand":"5"},
 
-    // --- FUTURES — ALL 10 (Average Value: ~475k | Average Demand: ~4.75/10)
-    // White
+    // --- FUTURE WHITE — ALL 5 (Average Value: ~500k | Average Demand: ~5.2/10)
     {"name":"Future White Scar L","worth":800000,"demand":"8"},
     {"name":"Future White Barrett","worth":650000,"demand":"7"},
     {"name":"Future White AK-47","worth":500000,"demand":"6"},
     {"name":"Future White Mossberg","worth":300000,"demand":"2.5"},
     {"name":"Future White Python","worth":250000,"demand":"1.5"},
-    // Black
+
+    // --- FUTURE BLACK — ALL 5 (Average Value: ~470k | Average Demand: ~4.5/10)
     {"name":"Future Black Scar L","worth":750000,"demand":"7.5"},
     {"name":"Future Black Barrett","worth":600000,"demand":"6.5"},
     {"name":"Future Black AK-47","worth":450000,"demand":"5.5"},
@@ -294,35 +287,35 @@ const embeddedSkins = [
     {"name":"Steampunk Tommy","worth":350000,"demand":"7"},
     {"name":"Steampunk Double Barrel","worth":260000,"demand":"5"},
 
-    // --- SUBZEROS — ALL 10 (Average Value: ~314k | Average Demand: ~6.75/10)
-    // Subzeros
+    // --- SUBZEROS — ALL 5 (Average Value: ~273k | Average Demand: ~6.2/10)
     {"name":"Subzero As Val","worth":300000,"demand":"6"},
     {"name":"Subzero Barrett M107","worth":255000,"demand":"4.5"},
     {"name":"Subzero M4A1","worth":290000,"demand":"7.5"},
     {"name":"Subzero RPG","worth":350000,"demand":"8"},
     {"name":"Subzero Deagle","worth":195000,"demand":"5"},
-    // Frozen Golds
+
+    // --- FROZEN GOLDS — ALL 5 (Average Value: ~350k | Average Demand: ~7.3/10)
     {"name":"Frozen Gold As Val","worth":380000,"demand":"7.5"},
     {"name":"Frozen Gold Barrett M107","worth":320000,"demand":"5.5"},
     {"name":"Frozen Gold M4A1","worth":350000,"demand":"8.5"},
     {"name":"Frozen Gold RPG","worth":450000,"demand":"9"},
     {"name":"Frozen Gold Deagle","worth":250000,"demand":"6"},
 
-    // --- ELITES — ALL 5 (Average Value: ~346k | Average Demand: ~7.3/10)
+    // --- ELITES — ALL 5 (Average Value: ~346k | Average Demand: ~7.5/10)
     {"name":"Elite Scar-L","worth":450000,"demand":"9"},
     {"name":"Elite AS Val","worth":350000,"demand":"7"},
     {"name":"Elite AUG","worth":370000,"demand":"8"},
     {"name":"Elite M4A1","worth":320000,"demand":"7.5"},
     {"name":"Elite Barrett","worth":240000,"demand":"5"},
 
-    // --- SAKURAS — ALL 10 (Average Value: ~203k | Average Demand: ~4.7/10)
-    // Sakuras
+    // --- SAKURAS — ALL 5 (Average Value: ~191k | Average Demand: ~4.4/10)
     {"name":"Sakura AS Val","worth":250000,"demand":"7"},
     {"name":"Sakura Barrett","worth":200000,"demand":"5.5"},
     {"name":"Sakura Tommy Gun","worth":230000,"demand":"6.5"},
     {"name":"Sakura Uzi","worth":140000,"demand":"2.5"},
     {"name":"Sakura Python","worth":135000,"demand":"1"},
-    // Death Blossoms
+
+    // --- DEATH BLOSSOMS — ALL 5 (Average Value: ~224k | Average Demand: ~5.0/10)
     {"name":"Death Blossom AS Val","worth":290000,"demand":"7.5"},
     {"name":"Death Blossom Tommy Gun","worth":250000,"demand":"7"},
     {"name":"Death Blossom Barrett","worth":220000,"demand":"6"},
@@ -336,34 +329,35 @@ const embeddedSkins = [
     {"name":"Wasteland AK 47","worth":125000,"demand":"3"},
     {"name":"Wasteland Double Barrel","worth":125000,"demand":"3"},
 
-    // --- MYSTICS — ALL 10 (Average Value: ~165k | Average Demand: ~6.15/10)
-    // Mystic
+    // --- MYSTIC — ALL 5 (Average Value: ~146k | Average Demand: ~5.7/10)
     {"name":"Mystic AUG","worth":175000,"demand":"7"},
     {"name":"Mystic AS-VAL","worth":155000,"demand":"7"},
     {"name":"Mystic BARRET","worth":140000,"demand":"5"},
     {"name":"Mystic AK-47","worth":135000,"demand":"6"},
     {"name":"Mystic M249-SAW","worth":125000,"demand":"3.5"},
-    // Void Mystic
+
+    // --- VOID MYSTIC — ALL 5 (Average Value: ~185k | Average Demand: ~6.6/10)
     {"name":"Void Mystic AUG","worth":245000,"demand":"8.5"},
     {"name":"Void Mystic AS-Val","worth":190000,"demand":"7.5"},
     {"name":"Void Mystic Barrett","worth":165000,"demand":"6"},
     {"name":"Void Mystic AK-47","worth":170000,"demand":"6"},
     {"name":"Void Mystic M249-SAW","worth":155000,"demand":"5"},
 
-    // --- PIRATES — ALL 12 (Average Value: ~269k | Average Demand: ~4.25/10)
-    // Pirate
+    // --- PIRATE — ALL 5 (Average Value: ~223k | Average Demand: ~3.0/10)
     {"name":"Pirate Scar-L","worth":425000,"demand":"9"},
     {"name":"Pirate Sawn off","worth":200000,"demand":"5"},
     {"name":"Pirate RPK","worth":180000,"demand":"2"},
     {"name":"Pirate Double barrel","worth":175000,"demand":"2"},
     {"name":"Pirate Python","worth":140000,"demand":"1"},
-    // Treasure
+
+    // --- TREASURE — ALL 5 (Average Value: ~310k | Average Demand: ~4.7/10)
     {"name":"Treasure Scar-L","worth":700000,"demand":"10"},
     {"name":"Treasure Sawn off","worth":220000,"demand":"6"},
     {"name":"Treasure RPK","worth":240000,"demand":"3.5"},
     {"name":"Treasure Double barrel","worth":210000,"demand":"2.5"},
     {"name":"Treasure Python","worth":180000,"demand":"1.5"},
-    // RPG Skins
+
+    // --- CANNON RPG — ALL 2 (Average Value: ~413k | Average Demand: ~6.8/10)
     {"name":"Cannon RPG","worth":325000,"demand":"6"},
     {"name":"Gold Cannon RPG","worth":500000,"demand":"7.5"},
 
@@ -381,21 +375,21 @@ const embeddedSkins = [
     {"name":"Void Nightmare P90","worth":190000,"demand":"6"},
     {"name":"Void Nightmare Barrett M107","worth":170000,"demand":"4"},
 
-    // --- WW2 — ALL 10 (Average Value: ~239k | Average Demand: ~5.5/10)
-    // WW2
+    // --- WW2 — ALL 5 (Average Value: ~180k | Average Demand: ~5.8/10)
     {"name":"WW2 RPG","worth":250000,"demand":"7"},
     {"name":"WW2 P90","worth":260000,"demand":"8"},
     {"name":"WW2 M249 SAW","worth":160000,"demand":"6"},
     {"name":"WW2 Barrett","worth":150000,"demand":"3"},
     {"name":"WW2 M1911","worth":120000,"demand":"1"},
-    // Prestige
+
+    // --- PRESTIGE — ALL 5 (Average Value: ~330k | Average Demand: ~6.1/10)
     {"name":"Prestige P90","worth":450000,"demand":"9"},
     {"name":"Prestige RPG","worth":400000,"demand":"8"},
     {"name":"Prestige M249 SAW","worth":250000,"demand":"7"},
     {"name":"Prestige Barrett","worth":220000,"demand":"5"},
     {"name":"Prestige M1911","worth":130000,"demand":"1"},
 
-    // --- GINGERBREADS — ALL 6 (Average Value: ~194k | Average Demand: ~4.67/10)
+    // --- GINGERBREADS — ALL 6 (Average Value: ~194k | Average Demand: ~4.7/10)
     {"name":"Gingerbread RPG","worth":240000,"demand":"6"},
     {"name":"Gingerbread Scar L","worth":220000,"demand":"5.5"},
     {"name":"Gingerbread AS Val","worth":190000,"demand":"5"},
@@ -403,14 +397,14 @@ const embeddedSkins = [
     {"name":"Gingerbread P90","worth":185000,"demand":"4.5"},
     {"name":"Gingerbread Barret","worth":170000,"demand":"3"},
 
-    // --- RAYS — ALL 10 (Average Value: ~208k | Average Demand: ~5.4/10)
-    // Freeze Rays
+    // --- FREEZE RAYS — ALL 5 (Average Value: ~170k | Average Demand: ~4.2/10)
     {"name":"Freeze Ray RPG","worth":210000,"demand":"6"},
     {"name":"Freeze Ray Scar L","worth":200000,"demand":"6"},
     {"name":"Freeze Ray AUG","worth":180000,"demand":"5"},
     {"name":"Freeze Ray P90","worth":130000,"demand":"4"},
     {"name":"Freeze Ray MP7","worth":125000,"demand":"2"},
-    // Void Rays
+
+    // --- VOID RAYS — ALL 5 (Average Value: ~248k | Average Demand: ~6.4/10)
     {"name":"Void Ray RPG","worth":280000,"demand":"7.5"},
     {"name":"Void Ray Scar L","worth":275000,"demand":"7"},
     {"name":"Void Ray AUG","worth":255000,"demand":"6"},
@@ -424,63 +418,64 @@ const embeddedSkins = [
     {"name":"Frozen Diamond P90","worth":1000000,"demand":"6"},
     {"name":"Frozen Diamond MP7","worth":900000,"demand":"5"},
 
-    // --- HYPERLASERS — ALL 15 (Average Value: ~343k | Average Demand: ~6.3/10)
-    // Hyperlaser
+    // --- HYPERLASER — ALL 5 (Average Value: ~203k | Average Demand: ~6.6/10)
     {"name":"Hyperlaser Scar L","worth":260000,"demand":"8"},
     {"name":"Hyperlaser RPG","worth":240000,"demand":"7.5"},
     {"name":"Hyperlaser As Val","worth":210000,"demand":"7"},
     {"name":"Hyperlaser M4A1","worth":195000,"demand":"6.5"},
     {"name":"Hyperlaser Mossberg","worth":150000,"demand":"4"},
-    // Rainbowlaser
+
+    // --- RAINBOWLASER — ALL 5 (Average Value: ~300k | Average Demand: ~5.9/10)
     {"name":"Rainbowlaser Scar L","worth":400000,"demand":"9"},
     {"name":"Rainbowlaser RPG","worth":340000,"demand":"8"},
     {"name":"Rainbowlaser As Val","worth":300000,"demand":"7"},
     {"name":"Rainbowlaser M4A1","worth":250000,"demand":"5"},
     {"name":"Rainbowlaser Mossberg","worth":210000,"demand":"3"},
-    // Voidlasers
+
+    // --- VOIDLASERS — ALL 5 (Average Value: ~538k | Average Demand: ~6.1/10)
     {"name":"Voidlaser Scar L","worth":660000,"demand":"8"},
     {"name":"Voidlaser RPG","worth":600000,"demand":"7"},
     {"name":"Voidlaser As Val","worth":520000,"demand":"7"},
     {"name":"Voidlaser M4A1","worth":460000,"demand":"5"},
     {"name":"Voidlaser Mossberg","worth":350000,"demand":"2.5"},
 
-    // --- ROSES — ALL 10 (Average Value: ~229k | Average Demand: ~5.5/10)
-    // Rose
+    // --- ROSE — ALL 5 (Average Value: ~197k | Average Demand: ~5.3/10)
     {"name":"Rose Scar L","worth":230000,"demand":"7"},
     {"name":"Rose RPG","worth":250000,"demand":"7.5"},
     {"name":"Rose M1 Grand","worth":165000,"demand":"3.5"},
     {"name":"Rose Dragunov","worth":150000,"demand":"3"},
     {"name":"Rose P90","worth":190000,"demand":"5.5"},
-    // Black Rose
+
+    // --- BLACK ROSE — ALL 5 (Average Value: ~260k | Average Demand: ~5.9/10)
     {"name":"Black Rose Scar L","worth":300000,"demand":"7.5"},
     {"name":"Black Rose RPG","worth":340000,"demand":"8"},
     {"name":"Black Rose M1 Grand","worth":220000,"demand":"4"},
     {"name":"Black Rose Dragunov","worth":200000,"demand":"3.5"},
     {"name":"Black Rose P90","worth":250000,"demand":"6"},
 
-    // --- LUCKY CLOVERS — ALL 10 (Average Value: ~260k | Average Demand: ~7.2/10)
-    // Lucky Clovers
+    // --- LUCKY CLOVER — ALL 5 (Average Value: ~223k | Average Demand: ~6.7/10)
     {"name":"Lucky Clover RPK","worth":195000,"demand":"5"},
     {"name":"Lucky Clover P90","worth":200000,"demand":"6"},
     {"name":"Lucky Clover Scar L","worth":240000,"demand":"7.5"},
     {"name":"Lucky Clover RPG","worth":230000,"demand":"7"},
     {"name":"Lucky Clover FN Fal","worth":250000,"demand":"8"},
-    // Fortune Favor
+
+    // --- FORTUNE FAVOR — ALL 5 (Average Value: ~299k | Average Demand: ~7.9/10)
     {"name":"Fortune Favor RPK","worth":235000,"demand":"6.5"},
     {"name":"Fortune Favor P90","worth":260000,"demand":"7"},
     {"name":"Fortune Favor Scar L","worth":310000,"demand":"8.5"},
     {"name":"Fortune Favor RPG","worth":330000,"demand":"8"},
     {"name":"Fortune Favor FN Fal","worth":350000,"demand":"9"},
 
-    // --- PIXELS — ALL 12 (Average Value: ~250k | Average Demand: ~5.9/10)
-    // Pixel
+    // --- PIXEL — ALL 6 (Average Value: ~180k | Average Demand: ~5.2/10)
     {"name":"Pixel RPG","worth":220000,"demand":"6"},
     {"name":"Pixel Scar L","worth":250000,"demand":"7"},
     {"name":"Pixel FN Fal","worth":200000,"demand":"6"},
     {"name":"Pixel P90","worth":190000,"demand":"6"},
     {"name":"Pixel Barrett M107","worth":170000,"demand":"4"},
     {"name":"Pixel AK-47","worth":50000,"demand":"2"},
-    // Diamond Pixel
+
+    // --- DIAMOND PIXEL — ALL 6 (Average Value: ~303k | Average Demand: ~6.7/10)
     {"name":"Diamond Pixel AK-47","worth":400000,"demand":"4"},
     {"name":"Diamond Pixel RPG","worth":300000,"demand":"7"},
     {"name":"Diamond Pixel Scar L","worth":350000,"demand":"8"},
@@ -610,9 +605,11 @@ const embeddedSkins = [
     {"name":"Topaz Python","worth":15000,"demand":"1"},
     {"name":"Topaz Glock","worth":10000,"demand":"1.5"},
 
-    // --- DOLLAR AND HEART — ALL 4 (Average Value: ~176k | Average Demand: ~5.3/10)
+    // --- DOLLAR — ALL 2 (Average Value: ~295k | Average Demand: ~7.3/10)
     {"name":"Dollar Scar L","worth":350000,"demand":"8"},
     {"name":"Dollar As Val","worth":240000,"demand":"6.5"},
+
+    // --- HEART — ALL 2 (Average Value: ~58k | Average Demand: ~3.5/10)
     {"name":"Heart Scar L","worth":75000,"demand":"4"},
     {"name":"Heart AS Val","worth":40000,"demand":"3"},
 
@@ -644,8 +641,10 @@ const embeddedSkins = [
     {"name":"Easter Egg M1991","worth":20000,"demand":"1"},
     {"name":"Easter Egg USP 45","worth":20000,"demand":"1"},
 
-    // --- HOTDOGS — ALL 27 (Average Value: ~113k | Average Demand: ~4/10)
+    // --- FREEDOM — ALL 1 (Average Value: ~1.5m | Average Demand: ~8.0/10)
     {"name":"Freedom RPG","worth":1500000,"demand":"8"},
+
+    // --- HOTDOGS — ALL 26 (Average Value: ~76k | Average Demand: ~3.9/10)
     {"name":"Hotdog RPG","worth":350000,"demand":"8"},
     {"name":"Hotdog AS Val","worth":240000,"demand":"7"},
     {"name":"Hotdog AUG","worth":230000,"demand":"7.5"},
@@ -848,11 +847,14 @@ const embeddedSkins = [
     {"name":"Starry USP 45","worth":5000,"demand":"1"},
     {"name":"Starry Raygun","worth":20000,"demand":"2"},
 
-    // --- HALLOWEEN 2023 — ALL 30 (Average Value: ~135k | Average Demand: ~4.5/10)
+    // --- HALLOWEEN PUMPKIN — ALL 1 (Average Value: ~900k | Average Demand: ~9.5/10)
     {"name":"Halloween Pumpkin RPG","worth":900000,"demand":"9.5"},
+
+    // --- HALLOWEEN SKIN MELTER — ALL 2 (Average Value: ~375k | Average Demand: ~4.3/10)
     {"name":"Halloween Skin Melter Double Barrel","worth":425000,"demand":"5.5"},
     {"name":"Halloween Skin Melter Mossberg","worth":325000,"demand":"3"},
-    // Ghost
+
+    // --- GHOST — ALL 27 (Average Value: ~85k | Average Demand: ~4.9/10)
     {"name":"Ghost SCAR-L","worth":235000,"demand":"8"},
     {"name":"Ghost RPG","worth":200000,"demand":"8"},
     {"name":"Ghost AS Val","worth":180000,"demand":"8.5"},
@@ -881,7 +883,7 @@ const embeddedSkins = [
     {"name":"Ghost USP45","worth":48000,"demand":"1"},
     {"name":"Ghost Raygun","worth":80000,"demand":"5"},
 
-    // --- TOYS — ALL 13 (Average Value: ~645k | Average Demand: ~6.5/10)
+    // --- TOY — ALL 14 (Average Value: ~557k | Average Demand: ~5.9/10)
     {"name":"Toy AUG","worth":1800000,"demand":"10"},
     {"name":"Toy AS Val","worth":850000,"demand":"8"},
     {"name":"Toy Barrett M107","worth":670000,"demand":"7"},
@@ -897,15 +899,19 @@ const embeddedSkins = [
     {"name":"Toy Mossberg","worth":300000,"demand":"3"},
     {"name":"Toy Python","worth":270000,"demand":"2"},
 
-    // --- HALLOWEEN 2024 — ALL 36 (Average Value: ~84k | Average Demand: ~3.7/10)
+    // --- HALLOWEEN CURSED PUMPKIN — ALL 1 (Average Value: ~500k | Average Demand: ~6.0/10)
     {"name":"Halloween Cursed Pumpkin RPG","worth":500000,"demand":"6"},
+
+    // --- HALLOWEEN VOID REAPER — ALL 3 (Average Value: ~212k | Average Demand: ~5.0/10)
     {"name":"Halloween Void Reaper Barrett M107","worth":200000,"demand":"4.5"},
     {"name":"Halloween Void Reaper M4A1","worth":225000,"demand":"5.5"},
     {"name":"Halloween Void Reaper AK 47","worth":210000,"demand":"5"},
-    // Skelly
+
+    // --- SKELLY — ALL 2 (Average Value: ~55k | Average Demand: ~4.5/10)
     {"name":"Skelly Barrett M107","worth":50000,"demand":"4"},
     {"name":"Skelly P90","worth":60000,"demand":"5"},
-    // White Ghost
+
+    // --- WHITE GHOST — ALL 30 (Average Value: ~41k | Average Demand: ~3.0/10)
     {"name":"White Ghost P90","worth":70000,"demand":"6"},
     {"name":"White Ghost Scar L","worth":80000,"demand":"6.5"},
     {"name":"White Ghost RPG","worth":75000,"demand":"6"},
@@ -937,8 +943,7 @@ const embeddedSkins = [
     {"name":"White Ghost USP 45","worth":24000,"demand":"0"},
     {"name":"White Ghost Raygun","worth":40000,"demand":"2.5"},
 
-    // --- XMAS 2024 — ALL 34 (Average Value: ~313k | Average Demand: ~5.1/10)
-    // Solid Gold Tacticals
+    // --- SOLID GOLD TACTICAL — ALL 10 (Average Value: ~390k | Average Demand: ~5.3/10)
     {"name":"Solid Gold Tactical Scar","worth":700000,"demand":"8.5"},
     {"name":"Solid Gold Tactical AUG","worth":575000,"demand":"7.5"},
     {"name":"Solid Gold Tactical AS Val","worth":550000,"demand":"7"},
@@ -949,7 +954,8 @@ const embeddedSkins = [
     {"name":"Solid Gold Tactical Dragunov","worth":220000,"demand":"1.5"},
     {"name":"Solid Gold Tactical Glock 18","worth":190000,"demand":"1"},
     {"name":"Solid Gold Tactical Glock","worth":170000,"demand":"1"},
-    // Gift Wrapped
+
+    // --- GIFT WRAPPED — ALL 14 (Average Value: ~333k | Average Demand: ~5.8/10)
     {"name":"Gift Wrapped RPG","worth":550000,"demand":"8"},
     {"name":"Gift Wrapped P90","worth":400000,"demand":"6.5"},
     {"name":"Gift Wrapped AS Val","worth":445000,"demand":"7"},
@@ -964,27 +970,33 @@ const embeddedSkins = [
     {"name":"Gift Wrapped Mossberg","worth":190000,"demand":"2"},
     {"name":"Gift Wrapped Deagle","worth":210000,"demand":"3"},
     {"name":"Gift Wrapped Python","worth":160000,"demand":"1"},
-    // Christmas Futures
+
+    // --- CHRISTMAS FUTURE — ALL 5 (Average Value: ~390k | Average Demand: ~4.8/10)
     {"name":"Christmas Future Scar L","worth":420000,"demand":"7"},
     {"name":"Christmas Future Barrett","worth":360000,"demand":"6.5"},
     {"name":"Christmas Future AK47","worth":320000,"demand":"5"},
     {"name":"Christmas Future Mossberg","worth":240000,"demand":"2"},
     {"name":"Christmas Future Python","worth":180000,"demand":"1.5"},
-    // Golden Snows
+
+    // --- GOLDEN SNOW — ALL 5 (Average Value: ~259k | Average Demand: ~6.6/10)
     {"name":"Golden Snow RPG","worth":375000,"demand":"7"},
     {"name":"Golden Snow Scar L","worth":310000,"demand":"6.5"},
     {"name":"Golden Snow AUG","worth":260000,"demand":"6"},
     {"name":"Golden Snow P90","worth":200000,"demand":"5"},
     {"name":"Golden Snow MP7","worth":150000,"demand":"5.5"},
-    // Specials
+
+    // --- SUB ZERO (XMAS 2024) — ALL 2 (Average Value: ~45k | Average Demand: ~1.8/10)
     {"name":"Sub Zero Scar L","worth":60000,"demand":"2"},
     {"name":"Sub Zero Garand","worth":30000,"demand":"1.5"},
+
+    // --- FROZEN GOLD (XMAS 2024) — ALL 2 (Average Value: ~275k | Average Demand: ~7.5/10)
     {"name":"Frozen Gold Scar L","worth":350000,"demand":"8"},
     {"name":"Frozen Gold Garand","worth":200000,"demand":"7"},
 
-    // --- 4TH OF JULY 2025 — ALL 8 (Average Value: ~282k | Average Demand: ~4.9/10)
+    // --- RAINBOW FIREWORK — ALL 1 (Average Value: ~450k | Average Demand: ~7.0/10)
     {"name":"Rainbow Firework RPG","worth":450000,"demand":"7"},
-    // Solid Gold Tacticals V2
+
+    // --- SOLID GOLD TACTICAL V2 — ALL 7 (Average Value: ~273k | Average Demand: ~4.9/10)
     {"name":"Solid Gold Tactical V2 P90","worth":280000,"demand":"5"},
     {"name":"Solid Gold Tactical V2 RPG","worth":320000,"demand":"6.5"},
     {"name":"Solid Gold Tactical V2 FN Fal","worth":300000,"demand":"6"},
@@ -993,11 +1005,11 @@ const embeddedSkins = [
     {"name":"Solid Gold Tactical V2 RPK","worth":220000,"demand":"3"},
     {"name":"Solid Gold Tactical V2 Deagle","worth":180000,"demand":"3"},
 
-    // --- ST PATRICK — ALL 2 (Average Value: ~625k | Average Demand: ~5.2/10)
+    // --- ST. PATRICK — ALL 2 (Average Value: ~625k | Average Demand: ~5.3/10)
     {"name":"St. Patrick Tommy Gun","worth":850000,"demand":"7"},
     {"name":"St. Patrick Python","worth":400000,"demand":"3.5"},
 
-    // --- HOLY FIRE — ALL 5 (Average Value: ~167k | Average Demand: ~4/10)
+    // --- HOLY FIRE — ALL 5 (Average Value: ~167k | Average Demand: ~4.0/10)
     {"name":"Holy Fire AS Val","worth":250000,"demand":"5.5"},
     {"name":"Holy Fire M4A1","worth":180000,"demand":"4"},
     {"name":"Holy Fire Barrett M107","worth":170000,"demand":"3"},
@@ -1041,7 +1053,7 @@ const embeddedSkins = [
     {"name":"Ethereal Glock","worth":45000,"demand":"1"},
     {"name":"Ethereal M1911","worth":35000,"demand":"1"},
 
-    // --- SPECTRAL — ALL 17 (Average Value: ~165k | Average Demand: ~5.37/10)
+    // --- SPECTRAL — ALL 17 (Average Value: ~165k | Average Demand: ~5.4/10)
     {"name":"Spectral Scar L","worth":300000,"demand":"8.5"},
     {"name":"Spectral FN FAL","worth":235000,"demand":"7"},
     {"name":"Spectral RPG","worth":270000,"demand":"8"},
@@ -1060,7 +1072,7 @@ const embeddedSkins = [
     {"name":"Spectral Glock 18","worth":60000,"demand":"2"},
     {"name":"Spectral Glock","worth":40000,"demand":"1"},
 
-    // --- BALLOONS — ALL 9 (Average Value: Unstable/Varies | Average Demand: High)
+    // --- BALLOONS — ALL 7 (Average Value: ~2.4m | Average Demand: ~6.5/10)
     {"name":"Balloon Dollar","worth":14000000,"demand":"9"},
     {"name":"Balloon Heart","worth":850000,"demand":"8"},
     {"name":"Balloon Clover","worth":750000,"demand":"8"},
@@ -1068,7 +1080,13 @@ const embeddedSkins = [
     {"name":"Balloon Bunny","worth":300000,"demand":"5"},
     {"name":"Balloon Bat","worth":250000,"demand":"4"},
     {"name":"Balloon Skull","worth":200000,"demand":"3"},
+
+    // --- GOLD ROSE (SPECIAL) — ALL 1 (Average Value: ~2.0m | Average Demand: ~10/10)
     {"name":"Gold Rose","worth":2000000,"demand":"10"},
+
+    // --- VOID ROSE (SPECIAL) — ALL 1 (Average Value: ~15.0m | Average Demand: ~10/10)
     {"name":"Void Rose","worth":15000000,"demand":"10"},
+
+    // --- SPECTRAL SCYTHE (SPECIAL) — ALL 1 (Average Value: ~0 | Average Demand: ~9/10)
     {"name":"Spectral Scythe","worth":0,"demand":"9"}
 ];
