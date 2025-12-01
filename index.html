@@ -1,231 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ohio Trading & Exchange Co.</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ohio Trading & Exchange Co.</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Particles -->
-  <div id="particles"></div>
+    <div id="particles"></div>
 
-  <!-- Flickering logo -->
-  <header class="header">
-    <h1 class="logo">OHIO TRADING & EXCHANGE CO.</h1>
-    <p class="tagline">CLASSIFIED VAULT • 28 NOV 2025</p>
-  </header>
+    <header class="header">
+    <h1 class="logo">OHIO TRADING & EXCHANGE CO.</h1>
+    <p class="tagline">CLASSIFIED VAULT • 28 NOV 2025</p>
+  </header>
 
-  <!-- Navigation -->
-  <nav class="nav">
-    <button class="nav-btn active" data-page="vault">VAULT</button>
-    <button class="nav-btn" data-page="calc">TRADE CALCULATOR</button>
-  </nav>
+    <nav class="nav">
+    <button class="nav-btn active" data-page="vault">VAULT</button>
+    <button class="nav-btn" data-page="calc">TRADE CALCULATOR</button>
+  </nav>
 
-  <!-- Vault Page -->
-  <section id="vault" class="page active">
-    <div class="search-bar">
-      <input type="text" id="search" placeholder="SEARCH 758+ SKINS..." autocomplete="off">
-    </div>
-    <div id="vault-content"></div>
-  </section>
+    <section id="vault" class="page active">
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="SEARCH 758+ SKINS..." autocomplete="off">
+    </div>
+    <div id="vault-content"></div>
+  </section>
 
-  <!-- Trade Calculator -->
-  <section id="calc" class="page">
-    <div class="calc-title">TRADE ANALYZER</div>
-    <div class="calculator">
-      <div class="trade-side giving">
-        <h2>GIVING</h2>
-        <div class="items" id="giving-items"></div>
-        <div class="input-wrapper">
-          <input type="text" id="give-input" placeholder="Type skin name..." autocomplete="off">
-          <div class="dropdown" id="give-dropdown"></div>
-        </div>
-        <div class="total">TOTAL: <span id="give-total">$0</span></div>
-      </div>
-      <div class="vs">⟷</div>
-      <div class="trade-side receiving">
-        <h2>RECEIVING</h2>
-        <div class="items" id="receiving-items"></div>
-        <div class="input-wrapper">
-          <input type="text" id="receive-input" placeholder="Type skin name..." autocomplete="off">
-          <div class="dropdown" id="receive-dropdown"></div>
-        </div>
-        <div class="total">TOTAL: <span id="receive-total">$0</span></div>
-      </div>
-    </div>
-    <div id="verdict">—</div>
-  </section>
+    <section id="calc" class="page">
+    <div class="calc-title">TRADE ANALYZER</div>
+    <div class="calculator">
+      <div class="trade-side giving">
+        <h2>GIVING</h2>
+        <div class="items" id="giving-items"></div>
+        <div class="input-wrapper">
+          <input type="text" id="give-input" placeholder="Type skin name..." autocomplete="off">
+          <div class="dropdown" id="give-dropdown"></div>
+        </div>
+        <div class="total">TOTAL: <span id="give-total">$0</span></div>
+      </div>
+      <div class="vs">⟷</div>
+      <div class="trade-side receiving">
+        <h2>RECEIVING</h2>
+        <div class="items" id="receiving-items"></div>
+        <div class="input-wrapper">
+          <input type="text" id="receive-input" placeholder="Type skin name..." autocomplete="off">
+          <div class="dropdown" id="receive-dropdown"></div>
+        </div>
+        <div class="total">TOTAL: <span id="receive-total">$0</span></div>
+      </div>
+    </div>
+    <div id="verdict">—</div>
+  </section>
 
-  <script src="skins.js"></script>
-  <script>
-    const skins = embeddedSkins || [];
-    const vaultContent = document.getElementById("vault-content");
-    const searchInput = document.getElementById("search");
+  <script src="skins.js"></script>
+  <script>
+    const skins = embeddedSkins || [];
+    const vaultContent = document.getElementById("vault-content");
+    const searchInput = document.getElementById("search");
 
-    // Page switching
-    document.querySelectorAll(".nav-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
-        document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-        btn.classList.add("active");
-        document.getElementById(btn.dataset.page).classList.add("active");
-      });
-    });
+    // Page switching
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.page).classList.add("active");
+      });
+    });
 
-    // Group skins
-    const order = ["Invisible","Obsidian","Dark Matter","Anti Matter","Crimson Bloods","Void Reapers","Underworld","White Ghost","Solid Gold","Gift Wrapped","Christmas Future","Golden Snow","Frozen Gold","Sub Zero","Rainbow Firework","Solid Gold V2","St Patrick","Holy Fire","Bloody Heart","Fallout","Atomic Pumpkin","Ethereal","Spectral","Balloon"];
-    const groups = [];
-    const used = new Set();
-    order.forEach(p => {
-      const list = skins.filter(s => !used.has(s.name) && s.name.includes(p));
-      list.forEach(s => used.add(s.name));
-      if (list.length) groups.push({name: p, items: list});
-    });
-    const leftovers = skins.filter(s => !used.has(s.name));
-    if (leftovers.length) groups.push({name: "Limited / Event", items: leftovers});
+    // --- START OF FIXED GROUPING LOGIC ---
+    
+    // Define a prioritized list of prefixes (most specific/longest first) to ensure skins are grouped correctly.
+    // This ensures that "Solid Gold Tactical" is matched before the more general "Solid Gold".
+    const order = [
+      // Longest/Most Specific Prefixes (Multi-word)
+      "Solid Gold Tactical V2", "Solid Gold Tactical", "Halloween Cursed Pumpkin", "Halloween Void Reaper", "Halloween Skin Melter", 
+      "Atomic Amethyst", "Atomic Nature", "Atomic Water", "Atomic Flame", "Christmas Future", "Future White", "Future Black", 
+      "Death Blossom", "Void Nightmare", "Void Mystic", "Voidlaser", "Rainbowlaser", "Hyperlaser", "Black Rose", "Lucky Clover", 
+      "Fortune Favor", "Diamond Pixel", "Tactical V3", "Atomic Pumpkin", "Bloody Heart", "Holy Fire", "Rainbow Firework", 
+      "Golden Snow", "Frozen Diamond", "Frozen Gold", "Sub Zero", "Freeze Ray", "Void Ray", "White Ghost", 
+      
+      // Mid-length/Common prefixes
+      "Cyberpunk", "Steampunk", "Gingerbread", "Wasteland", "Spectral", "Ethereal", "Fallout", "Patriot", "Treasure", "Biohazard", 
+      "Prestige", "Crimson Blood", "Anti Matter", "Dark Matter", "Obsidian", "Invisible", "Underworld", "Solid Gold", "Tactical", 
+      "Subzero", "Reaper", "Sakura", "Mystic", "Pirate", "WW2", "Pixel", "Diamond", "Gift Wrapped", "Hotdog", "Starry", "Firework",
+      
+      // Shortest/Single word colors/flags/specials
+      "Ruby", "Sapphire", "Emerald", "Amethyst", "Topaz", "Dollar", "Heart", "Easter Egg", "Freedom", "White", "Red", "Blue", "USA",
+      "Cannon", "Skelly", "Toy", "St. Patrick", "Halloween Pumpkin", 
+      
+      // Specials and Catch-all for "Void" and single-name specials
+      "Void Reaper", // Needs to be before generic 'Void'
+      "Void",        // Catch generic 'Void' skins (must be last of the Voids)
+      "Balloon", "Gold Rose", "Void Rose", "Spectral Scythe",
+    ];
+    
+    const groups = [];
+    const used = new Set();
 
-    function format(v) {
-      if (v === 0) return "Unrated";
-      if (v >= 1000000) return "$" + (v/1000000).toFixed(1) + "M";
-      if (v >= 1000) return "$" + Math.floor(v/1000) + "K";
-      return "$" + v;
-    }
+    // Iterate over the prioritized list to create distinct categories
+    order.forEach(p => {
+      // Match skins that contain the category prefix AND have not been used yet.
+      const list = skins.filter(s => !used.has(s.name) && s.name.includes(p));
+      
+      // Add matched skins to the 'used' set and create the new group.
+      list.forEach(s => used.add(s.name));
+      
+      // Only push if there are items, and use the prefix (p) as the group name.
+      if (list.length) groups.push({name: p.toUpperCase(), items: list}); 
+    });
 
-    function renderVault() {
-      const q = searchInput.value.toLowerCase();
-      vaultContent.innerHTML = "";
-      groups.forEach(g => {
-        const filtered = g.items.filter(s => s.name.toLowerCase().includes(q));
-        if (!filtered.length) return;
-        vaultContent.innerHTML += `
-          <div class="category">
-            <h2 class="cat-title">${g.name} <span>[${filtered.length}]</span></h2>
-            <div class="cards">
-              ${filtered.map(s => `
-                <div class="card animate">
-                  <div class="name">${s.name}</div>
-                  <div class="value">${format(s.worth)}</div>
-                  <div class="demand">DEMAND: ${s.demand === "?" ? "???" : s.demand+"/10"}</div>
-                </div>
-              `).join("")}
-            </div>
-          </div>
-        `;
-      });
-    }
-    searchInput.addEventListener("input", renderVault);
-    renderVault();
+    // Catch any true leftovers
+    const leftovers = skins.filter(s => !used.has(s.name));
+    if (leftovers.length) {
+      groups.push({name: "MISC / UNRECOGNIZED", items: leftovers});
+    }
 
-    // Trade calculator
-    const giveInput = document.getElementById("give-input");
-    const receiveInput = document.getElementById("receive-input");
-    const giveDropdown = document.getElementById("give-dropdown");
-    const receiveDropdown = document.getElementById("receive-dropdown");
-    const giveItems = document.getElementById("giving-items");
-    const receiveItems = document.getElementById("receiving-items");
-    const giveTotal = document.getElementById("give-total");
-    const receiveTotal = document.getElementById("receive-total");
-    const verdict = document.getElementById("verdict");
+    // --- END OF FIXED GROUPING LOGIC ---
+    
+    function format(v) {
+      if (v === 0) return "Unrated";
+      if (v >= 1000000) return "$" + (v/1000000).toFixed(1) + "M";
+      if (v >= 1000) return "$" + Math.floor(v/1000) + "K";
+      return "$" + v;
+    }
 
-    function showDropdown(input, dropdown){
-      const val = input.value.toLowerCase();
-      if(!val){ dropdown.innerHTML=""; dropdown.style.display="none"; return; }
-      const matches = skins.filter(s => s.name.toLowerCase().includes(val)).slice(0,8);
-      dropdown.innerHTML = matches.map(s => `<div class="option" data-name="${s.name}" data-worth="${s.worth}">${s.name} <span>(${format(s.worth)})</span></div>`).join("");
-      dropdown.style.display = matches.length ? "block" : "none";
-    }
+    function renderVault() {
+      const q = searchInput.value.toLowerCase();
+      vaultContent.innerHTML = "";
+      groups.forEach(g => {
+        const filtered = g.items.filter(s => s.name.toLowerCase().includes(q));
+        if (!filtered.length) return;
+        vaultContent.innerHTML += `
+          <div class="category">
+            <h2 class="cat-title">${g.name} <span>[${filtered.length}]</span></h2>
+            <div class="cards">
+              ${filtered.map(s => `
+                <div class="card animate">
+                  <div class="name">${s.name}</div>
+                  <div class="value">${format(s.worth)}</div>
+                  <div class="demand">DEMAND: ${s.demand === "?" ? "???" : s.demand+"/10"}</div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `;
+      });
+    }
+    searchInput.addEventListener("input", renderVault);
+    renderVault();
 
-    function addSkin(name, worth, container){
-      const div = document.createElement("div");
-      div.className="trade-item";
-      div.innerHTML = `<span>${name}</span><span>${format(worth)}</span><button>×</button>`;
-      div.querySelector("button").onclick = ()=>{ div.remove(); update(); };
-      container.appendChild(div);
-      update();
-    }
+    // Trade calculator
+    const giveInput = document.getElementById("give-input");
+    const receiveInput = document.getElementById("receive-input");
+    const giveDropdown = document.getElementById("give-dropdown");
+    const receiveDropdown = document.getElementById("receive-dropdown");
+    const giveItems = document.getElementById("giving-items");
+    const receiveItems = document.getElementById("receiving-items");
+    const giveTotal = document.getElementById("give-total");
+    const receiveTotal = document.getElementById("receive-total");
+    const verdict = document.getElementById("verdict");
 
-    [giveInput, receiveInput].forEach(input=>{
-      const dropdown = input.id.includes("give") ? giveDropdown : receiveDropdown;
-      input.addEventListener("input", ()=>showDropdown(input, dropdown));
-      input.addEventListener("keydown", e=>{
-        if(e.key==="Enter" && input.value){
-          const match = skins.find(s=>s.name.toLowerCase()===input.value.toLowerCase());
-          if(match){
-            addSkin(match.name, match.worth, input.id.includes("give") ? giveItems : receiveItems);
-            input.value="";
-            dropdown.innerHTML="";
-            dropdown.style.display="none";
-          }
-        }
-      });
-    });
+    function showDropdown(input, dropdown){
+      const val = input.value.toLowerCase();
+      if(!val){ dropdown.innerHTML=""; dropdown.style.display="none"; return; }
+      const matches = skins.filter(s => s.name.toLowerCase().includes(val)).slice(0,8);
+      dropdown.innerHTML = matches.map(s => `<div class="option" data-name="${s.name}" data-worth="${s.worth}">${s.name} <span>(${format(s.worth)})</span></div>`).join("");
+      dropdown.style.display = matches.length ? "block" : "none";
+    }
 
-    document.addEventListener("click", e=>{
-      if(e.target.classList.contains("option")){
-        const name = e.target.dataset.name;
-        const worth = parseInt(e.target.dataset.worth);
-        const container = e.target.closest(".input-wrapper").previousElementSibling;
-        addSkin(name, worth, container);
-        giveInput.value = receiveInput.value = "";
-        giveDropdown.innerHTML = receiveDropdown.innerHTML = "";
-        giveDropdown.style.display = receiveDropdown.style.display = "none";
-      }
-    });
+    function addSkin(name, worth, container){
+      const div = document.createElement("div");
+      div.className="trade-item";
+      div.innerHTML = `<span>${name}</span><span>${format(worth)}</span><button>×</button>`;
+      div.querySelector("button").onclick = ()=>{ div.remove(); update(); };
+      container.appendChild(div);
+      update();
+    }
 
-    function getTotal(container){
-      return Array.from(container.children).reduce((sum, el)=>{
-        const val = el.children[1].textContent;
-        if(val==="Unrated") return sum;
-        const n = parseFloat(val.replace(/[$,MK]/g,""));
-        return sum + (val.includes("M")?n*1000000: val.includes("K")?n*1000:n);
-      },0);
-    }
+    [giveInput, receiveInput].forEach(input=>{
+      const dropdown = input.id.includes("give") ? giveDropdown : receiveDropdown;
+      input.addEventListener("input", ()=>showDropdown(input, dropdown));
+      input.addEventListener("keydown", e=>{
+        if(e.key==="Enter" && input.value){
+          const match = skins.find(s=>s.name.toLowerCase()===input.value.toLowerCase());
+          if(match){
+            addSkin(match.name, match.worth, input.id.includes("give") ? giveItems : receiveItems);
+            input.value="";
+            dropdown.innerHTML="";
+            dropdown.style.display="none";
+          }
+        }
+      });
+    });
 
-    function update(){
-      const give = getTotal(giveItems);
-      const receive = getTotal(receiveItems);
-      giveTotal.textContent = format(give);
-      receiveTotal.textContent = format(receive);
+    document.addEventListener("click", e=>{
+      if(e.target.classList.contains("option")){
+        const name = e.target.dataset.name;
+        const worth = parseInt(e.target.dataset.worth);
+        const container = e.target.closest(".input-wrapper").previousElementSibling;
+        addSkin(name, worth, container);
+        giveInput.value = receiveInput.value = "";
+        giveDropdown.innerHTML = receiveDropdown.innerHTML = "";
+        giveDropdown.style.display = receiveDropdown.style.display = "none";
+      }
+    });
 
-      if(give + receive === 0){
-        verdict.textContent="—";
-        verdict.style.color="#666";
-        return;
-      }
+    function getTotal(container){
+      return Array.from(container.children).reduce((sum, el)=>{
+        const val = el.children[1].textContent;
+        if(val==="Unrated") return sum;
+        const n = parseFloat(val.replace(/[$,MK]/g,""));
+        return sum + (val.includes("M")?n*1000000: val.includes("K")?n*1000:n);
+      },0);
+    }
 
-      const pct = give===0 ? 999 : ((receive-give)/give)*100;
-      let msg, color;
-      let cashDiff = receive - give;
-      let sign = cashDiff >= 0 ? "+" : "-";
-      let formattedCashDiff = format(Math.abs(cashDiff));
+    function update(){
+      const give = getTotal(giveItems);
+      const receive = getTotal(receiveItems);
+      giveTotal.textContent = format(give);
+      receiveTotal.textContent = format(receive);
 
-      if(Math.abs(pct)<=12){ msg=`FAIR TRADE (${sign}${formattedCashDiff})`; color="#fff"; }
-      else if(pct>12){ msg=`WIN +${pct.toFixed(0)}% (${sign}${formattedCashDiff})`; color="#0f0"; }
-      else if(pct>-35){ msg=`SLIGHT L (${sign}${formattedCashDiff})`; color="#ff0"; }
-      else{ msg=`SCAM / BAD (${sign}${formattedCashDiff})`; color="#f00"; }
+      if(give + receive === 0){
+        verdict.textContent="—";
+        verdict.style.color="#666";
+        return;
+      }
 
-      verdict.textContent=msg;
-      verdict.style.color=color;
-      verdict.style.textShadow=`0 0 20px ${color}`;
-    }
+      const pct = give===0 ? 999 : ((receive-give)/give)*100;
+      let msg, color;
+      let cashDiff = receive - give;
+      let sign = cashDiff >= 0 ? "+" : "-";
+      let formattedCashDiff = format(Math.abs(cashDiff));
+
+      if(Math.abs(pct)<=12){ msg=`FAIR TRADE (${sign}${formattedCashDiff})`; color="#fff"; }
+      else if(pct>12){ msg=`WIN +${pct.toFixed(0)}% (${sign}${formattedCashDiff})`; color="#0f0"; }
+      else if(pct>-35){ msg=`SLIGHT L (${sign}${formattedCashDiff})`; color="#ff0"; }
+      else{ msg=`SCAM / BAD (${sign}${formattedCashDiff})`; color="#f00"; }
+
+      verdict.textContent=msg;
+      verdict.style.color=color;
+      verdict.style.textShadow=`0 0 20px ${color}`;
+    }
 
 // Particle system
 const particles = document.getElementById("particles");
 for(let i=0;i<80;i++){
-  const p=document.createElement("div");
-  p.className="particle";
-  p.style.left=Math.random()*100+"vw";
-  let size = 1 + Math.random()*2;
-  p.style.width = size + "px";
-  p.style.height = size + "px";
-  p.style.opacity = 0.2 + Math.random()*0.8;
-  p.style.animationDelay = Math.random()*5 + "s";
-  p.style.animationDuration = 5 + Math.random()*5 + "s"; // 5-10 seconds
-  particles.appendChild(p);
+  const p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"vw";
+  let size = 1 + Math.random()*2;
+  p.style.width = size + "px";
+  p.style.height = size + "px";
+  p.style.opacity = 0.2 + Math.random()*0.8;
+  p.style.animationDelay = Math.random()*5 + "s";
+  p.style.animationDuration = 5 + Math.random()*5 + "s"; // 5-10 seconds
+  particles.appendChild(p);
 }
-  </script>
+  </script>
 </body>
 </html>
-
