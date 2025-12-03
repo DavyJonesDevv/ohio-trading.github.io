@@ -176,6 +176,15 @@ const embeddedSkins = [
     {"name":"Solid Gold Flamethrower","worth":900000,"demand":"2"},
     {"name":"Solid Gold Mossberg","worth":850000,"demand":"1"},
     {"name":"Solid Gold AR-15","worth":800000,"demand":"1"},
+    {"name":"Solid Gold Uzi","worth":650000,"demand":"3"},
+    {"name":"Solid Gold Dragunov","worth":550000,"demand":"1"},
+    {"name":"Solid Gold Python","worth":500000,"demand":"1"},
+    {"name":"Solid Gold Saiga 12","worth":500000,"demand":"1"},
+    {"name":"Solid Gold Glock-18","worth":450000,"demand":"1"},
+    {"name":"Solid Gold Glock","worth":450000,"demand":"1"},
+    {"name":"Solid Gold Stagecoach","worth":450000,"demand":"1"},
+    {"name":"Solid Gold M1911","worth":420000,"demand":"1"},
+    {"name":"Solid Gold USP","worth":400000,"demand":"1"}
 
     // --- VOIDS — ALL 22 (Average Value: ~2.23m | Average Demand: ~4.26/10)
     {"name":"Void RPG","worth":8500000,"demand":"10"},
@@ -1090,3 +1099,4 @@ const embeddedSkins = [
     // --- SPECTRAL SCYTHE (SPECIAL) — ALL 1 (Average Value: ~0 | Average Demand: ~9/10)
     {"name":"Spectral Scythe","worth":0,"demand":"9"}
 ];
+
